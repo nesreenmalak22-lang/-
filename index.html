@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>شخصيات العهد القديم</title>
+<title>شخصيات العهد القديم - Ultra Pro</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;800;900&display=swap" rel="stylesheet">
 
@@ -17,146 +16,362 @@ box-sizing:border-box;
 font-family:'Cairo',sans-serif;
 }
 
+:root{
+--gold:#ffd166;
+--glass:rgba(255,255,255,.08);
+--border:rgba(255,255,255,.15);
+}
+
 body{
-background:linear-gradient(135deg,#050816,#0d1b2a,#1b263b);
-min-height:100vh;
+background:
+radial-gradient(circle at top,#132238,#050816),
+linear-gradient(135deg,#050816,#09111f,#101c30);
 color:white;
+min-height:100vh;
 overflow-x:hidden;
 }
 
+/* Scroll */
+
+::-webkit-scrollbar{
+width:10px;
+}
+
+::-webkit-scrollbar-track{
+background:#08101d;
+}
+
+::-webkit-scrollbar-thumb{
+background:var(--gold);
+border-radius:20px;
+}
+
+/* HEADER */
+
 header{
-padding:30px 20px;
+padding:30px;
+position:relative;
 text-align:center;
 }
 
-.top-bar{
+.topbar{
 display:flex;
-justify-content:flex-end;
-margin-bottom:25px;
+justify-content:space-between;
+align-items:center;
+gap:15px;
+margin-bottom:35px;
+flex-wrap:wrap;
 }
 
 .church{
-font-size:20px;
-font-weight:900;
-color:#ffd166;
-background:rgba(255,255,255,.08);
 padding:12px 20px;
+background:var(--glass);
+backdrop-filter:blur(15px);
+border:1px solid var(--border);
 border-radius:15px;
-backdrop-filter:blur(10px);
-border:1px solid rgba(255,255,255,.15);
+font-weight:800;
+color:var(--gold);
 }
 
-h1{
-font-size:clamp(38px,6vw,75px);
+.counter{
+padding:12px 20px;
+background:var(--glass);
+backdrop-filter:blur(15px);
+border:1px solid var(--border);
+border-radius:15px;
+font-weight:700;
+}
+
+.hero{
+max-width:1000px;
+margin:auto;
+}
+
+.hero h1{
+font-size:clamp(40px,6vw,85px);
 font-weight:900;
-margin:10px 0;
-background:linear-gradient(90deg,#ffffff,#ffd166,#ffffff);
+
+background:
+linear-gradient(
+90deg,
+#fff,
+#ffd166,
+#fff
+);
+
 -webkit-background-clip:text;
 -webkit-text-fill-color:transparent;
+
+margin-bottom:15px;
 }
 
-.subtitle{
-margin-bottom:20px;
+.hero p{
+opacity:.8;
 font-size:18px;
-opacity:.85;
+line-height:1.8;
 }
 
-.search-box{
-width:90%;
-max-width:700px;
-margin:20px auto 40px;
+/* SEARCH */
+
+.search-area{
+max-width:850px;
+margin:35px auto;
+position:relative;
 }
 
-.search-box input{
+.search{
 width:100%;
-padding:16px;
+padding:18px 20px;
 border:none;
 outline:none;
-border-radius:15px;
-font-size:18px;
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(12px);
+border-radius:18px;
+background:var(--glass);
+backdrop-filter:blur(15px);
 color:white;
+font-size:18px;
+border:1px solid var(--border);
 }
+
+.search::placeholder{
+color:#ccc;
+}
+
+/* CATEGORY FILTER */
+
+.filters{
+display:flex;
+justify-content:center;
+gap:10px;
+flex-wrap:wrap;
+margin:20px 0 40px;
+}
+
+.filter-btn{
+padding:10px 18px;
+border-radius:999px;
+background:var(--glass);
+border:1px solid var(--border);
+cursor:pointer;
+transition:.3s;
+}
+
+.filter-btn:hover{
+background:rgba(255,209,102,.15);
+}
+
+/* GRID */
 
 .container{
 width:95%;
-max-width:1500px;
+max-width:1600px;
 margin:auto;
-padding-bottom:50px;
+padding-bottom:60px;
 }
 
 .grid{
 display:grid;
-grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
-gap:18px;
+grid-template-columns:
+repeat(
+auto-fill,
+minmax(240px,1fr)
+);
+gap:20px;
 }
 
 .card{
-background:rgba(255,255,255,.08);
-backdrop-filter:blur(12px);
-border:1px solid rgba(255,255,255,.15);
-border-radius:18px;
-padding:20px;
+
+background:var(--glass);
+border:1px solid var(--border);
+backdrop-filter:blur(15px);
+
+border-radius:22px;
+
+padding:25px;
+
 cursor:pointer;
-transition:.3s;
-text-align:center;
+
+transition:.35s;
+
+position:relative;
+
+overflow:hidden;
+
+}
+
+.card::before{
+
+content:"";
+
+position:absolute;
+
+width:250px;
+height:250px;
+
+background:
+radial-gradient(
+circle,
+rgba(255,209,102,.18),
+transparent 70%
+);
+
+top:-100px;
+left:-100px;
+
+opacity:0;
+
+transition:.4s;
+
+}
+
+.card:hover::before{
+opacity:1;
 }
 
 .card:hover{
-transform:translateY(-8px);
-box-shadow:0 0 25px rgba(255,209,102,.3);
-border-color:#ffd166;
+transform:
+translateY(-8px)
+scale(1.02);
+
+border-color:var(--gold);
+
+box-shadow:
+0 0 30px rgba(255,209,102,.15);
+}
+
+.card-icon{
+font-size:40px;
+margin-bottom:15px;
 }
 
 .card h3{
-font-size:20px;
+font-size:22px;
+font-weight:800;
+margin-bottom:8px;
 }
 
+.card p{
+opacity:.7;
+font-size:14px;
+}
+
+/* MODAL */
+
 .modal{
+
 position:fixed;
+
 top:0;
 left:0;
+
 width:100%;
 height:100%;
-background:rgba(0,0,0,.85);
+
+background:rgba(0,0,0,.88);
+
 display:none;
+
 justify-content:center;
 align-items:center;
-z-index:999;
+
+z-index:9999;
+
 padding:20px;
+
 }
 
 .modal-content{
+
 width:100%;
-max-width:500px;
+max-width:650px;
+
 background:#0f172a;
-border-radius:20px;
-padding:30px;
+
+border-radius:25px;
+
+padding:35px;
+
 text-align:center;
-border:1px solid rgba(255,255,255,.15);
+
+border:1px solid var(--border);
+
+animation:show .35s ease;
+
+}
+
+@keyframes show{
+
+from{
+opacity:0;
+transform:translateY(30px);
+}
+
+to{
+opacity:1;
+transform:translateY(0);
+}
+
 }
 
 .modal-content h2{
-font-size:32px;
+font-size:36px;
+margin-bottom:15px;
+}
+
+.modal-content p{
+opacity:.8;
+line-height:1.9;
 margin-bottom:20px;
 }
 
 .download-btn{
+
 display:inline-block;
-padding:14px 30px;
-background:#ffd166;
-color:black;
+
+padding:16px 35px;
+
+background:var(--gold);
+
+color:#000;
+
 text-decoration:none;
+
 font-weight:900;
-border-radius:10px;
-margin-top:15px;
+
+border-radius:14px;
+
+transition:.3s;
+
+}
+
+.download-btn:hover{
+transform:scale(1.05);
 }
 
 .close-btn{
 margin-top:20px;
-color:#ff6b6b;
 cursor:pointer;
+color:#ff8585;
+font-size:18px;
+}
+
+.alert{
+margin-top:15px;
+padding:12px;
+border-radius:12px;
+background:#d62828;
+display:none;
+}
+
+footer{
+
+padding:40px;
+
+text-align:center;
+
+opacity:.7;
+
+font-size:14px;
+
 }
 
 </style>
@@ -165,41 +380,108 @@ cursor:pointer;
 
 <header>
 
-<div class="top-bar">
-<div class="church">اجتماع إعدادي بكنيسة الإخوة بعاصم</div>
+<div class="topbar">
+
+<div class="church">
+اجتماع إعدادي بكنيسة الإخوة بعاصم
 </div>
 
-<h1>شخصيات العهد القديم كاملاً</h1>
+<div class="counter" id="counter">
+62 شخصية
+</div>
 
-<div class="subtitle">اختر الشخصية لتحميل ملف الـ PDF</div>
+</div>
 
-<div class="search-box">
-<input type="text" id="searchInput" placeholder="ابحث عن شخصية...">
+<div class="hero">
+
+<h1>
+شخصيات العهد القديم كاملاً
+</h1>
+
+<p>
+موسوعة شخصيات العهد القديم مع ملفات PDF جاهزة للتحميل
+</p>
+
+</div>
+
+<div class="search-area">
+
+<input
+type="text"
+class="search"
+id="searchInput"
+placeholder="ابحث عن أي شخصية..."
+>
+
+</div>
+
+<div class="filters">
+
+<div class="filter-btn">الكل</div>
+<div class="filter-btn">أنبياء</div>
+<div class="filter-btn">ملوك</div>
+<div class="filter-btn">نساء</div>
+
 </div>
 
 </header>
 
 <div class="container">
-<div class="grid" id="cards"></div>
+
+<div class="grid" id="cardsContainer">
+
+<!-- cards -->
+
 </div>
 
+</div>
 <!-- MODAL -->
-<div class="modal" id="modal">
-<div class="modal-content">
-<h2 id="modalTitle"></h2>
 
-<a id="downloadBtn" class="download-btn" download>
-تحميل الملف PDF
+<div class="modal" id="modal">
+
+<div class="modal-content">
+
+<h2 id="personName"></h2>
+
+<p>
+اضغط على الزر التالي لتحميل الملف الخاص بالشخصية
+</p>
+
+<a
+id="downloadLink"
+class="download-btn"
+download
+>
+تحميل ملف PDF
 </a>
 
-<div class="close-btn" onclick="closeModal()">إغلاق</div>
+<div class="alert" id="alertBox">
+❌ الملف غير موجود
 </div>
+
+<div
+class="close-btn"
+onclick="closeModal()"
+>
+إغلاق
 </div>
+
+</div>
+
+</div>
+
+<footer>
+
+جميع الحقوق محفوظة © اجتماع إعدادي بكنيسة الإخوة بعاصم
+
+</footer>
 
 <script>
 
-/* CHARACTERS UPDATED */
+/* الشخصيات */
+
 const characters = [
+
 "شخصية آدم",
 "شخصية حواء",
 "شخصية قايين",
@@ -215,7 +497,7 @@ const characters = [
 "شخصية إسحاق",
 "شخصية رفقة",
 "شخصية عيسو",
-"شخصية يعقوب",
+"شخصية يعقوب (إسرائيل)",
 "شخصية راحيل",
 "شخصية ليئة",
 "شخصية يوسف الصديق",
@@ -246,76 +528,295 @@ const characters = [
 "شخصية أليشع النبي",
 "شخصية حزقيا الملك",
 "شخصية يوشيا الملك",
-"شخصية ملكي صادق",
-"شخصية نعمي",
-"شخصية يهوشافاط الملك",
-"شخصية مردخاي",
 "شخصية إشعياء النبي",
 "شخصية إرميا النبي",
 "شخصية حزقيال النبي",
 "شخصية دانيال النبي",
 "شخصية يونان النبي",
-"شخصية هوشع،عاموس،ميخا",
+"شخصية هوشع، عاموس، ميخا",
 "شخصية الملك كورش",
 "شخصية زربابل",
 "شخصية عزرا الكاتب",
 "شخصية نحميا",
 "شخصية أستير الملكة",
-"شخصية ملاخي النبي"
+"شخصية ملاخي النبي",
+"شخصية مردخاي",
+"شخصية يهوشافاط الملك",
+"شخصية نعمي",
+"شخصية ملكي صادق"
+
 ];
 
-const cards = document.getElementById("cards");
+let selectedCharacter = "";
 
-/* NORMALIZE SEARCH */
-function normalize(text){
+/* العناصر */
+
+const cardsContainer =
+document.getElementById("cardsContainer");
+
+const modal =
+document.getElementById("modal");
+
+const personName =
+document.getElementById("personName");
+
+const downloadLink =
+document.getElementById("downloadLink");
+
+const alertBox =
+document.getElementById("alertBox");
+
+/* تطبيع البحث */
+
+function normalizeArabic(text){
+
 return text
+
 .toLowerCase()
+
 .replace(/[أإآا]/g,"ا")
+
 .replace(/ة/g,"ه")
+
 .replace(/ى/g,"ي")
+
 .replace(/ؤ/g,"و")
+
 .replace(/ئ/g,"ي")
+
 .replace(/ـ/g,"")
+
 .replace(/[\u064B-\u065F]/g,"");
+
 }
 
-/* RENDER */
-function render(list){
-cards.innerHTML="";
+/* إنشاء الكروت */
+
+function renderCards(list){
+
+cardsContainer.innerHTML = "";
+
 list.forEach(name=>{
-const div=document.createElement("div");
-div.className="card";
-div.innerHTML=`<h3>${name}</h3>`;
-div.onclick=()=>openModal(name);
-cards.appendChild(div);
+
+const card =
+document.createElement("div");
+
+card.className = "card";
+
+card.innerHTML = `
+
+<div class="card-icon">
+📖
+</div>
+
+<h3>${name}</h3>
+
+<p>
+اضغط لعرض الملف
+</p>
+
+`;
+
+card.onclick = ()=>{
+
+openModal(name);
+
+};
+
+cardsContainer.appendChild(card);
+
 });
+
 }
 
-render(characters);
+renderCards(characters);
+/* فتح النافذة */
 
-/* MODAL */
 function openModal(name){
-document.getElementById("modal").style.display="flex";
-document.getElementById("modalTitle").innerText=name;
-document.getElementById("downloadBtn").href=encodeURIComponent(name)+".pdf";
+
+selectedCharacter = name;
+
+personName.innerText = name;
+
+alertBox.style.display = "none";
+
+downloadLink.href =
+encodeURIComponent(name)+".pdf";
+
+modal.style.display = "flex";
+
 }
+
+/* إغلاق النافذة */
 
 function closeModal(){
-document.getElementById("modal").style.display="none";
+
+modal.style.display = "none";
+
 }
 
-/* SEARCH */
-document.getElementById("searchInput").addEventListener("input",function(){
-const val=normalize(this.value);
-const filtered=characters.filter(c=>normalize(c).includes(val));
-render(filtered);
+/* إغلاق عند الضغط بالخارج */
+
+window.onclick = function(e){
+
+if(e.target === modal){
+
+closeModal();
+
+}
+
+}
+
+/* التحقق من الملف قبل التحميل */
+
+downloadLink.addEventListener(
+
+"click",
+
+function(e){
+
+e.preventDefault();
+
+const fileName =
+encodeURIComponent(selectedCharacter)+".pdf";
+
+fetch(fileName)
+
+.then(response=>{
+
+if(response.ok){
+
+window.location.href =
+fileName;
+
+}else{
+
+alertBox.style.display =
+"block";
+
+}
+
+})
+
+.catch(()=>{
+
+alertBox.style.display =
+"block";
+
 });
 
-window.onclick=function(e){
-if(e.target.id==="modal") closeModal();
 }
+
+);
+
+/* البحث الذكي */
+
+document
+.getElementById("searchInput")
+
+.addEventListener(
+
+"input",
+
+function(){
+
+const value =
+normalizeArabic(this.value);
+
+const filtered =
+characters.filter(item=>
+
+normalizeArabic(item)
+
+.includes(value)
+
+);
+
+renderCards(filtered);
+
+}
+
+);
+
+/* تأثير ظهور الكروت */
+
+const observer =
+new IntersectionObserver(
+
+entries=>{
+
+entries.forEach(entry=>{
+
+if(entry.isIntersecting){
+
+entry.target.style.opacity="1";
+
+entry.target.style.transform=
+"translateY(0)";
+
+}
+
+});
+
+},
+
+{
+threshold:0.1
+}
+
+);
+
+setTimeout(()=>{
+
+document
+
+.querySelectorAll(".card")
+
+.forEach(card=>{
+
+card.style.opacity="0";
+
+card.style.transform=
+"translateY(30px)";
+
+card.style.transition=
+".5s";
+
+observer.observe(card);
+
+});
+
+},500);
+
+/* عداد الشخصيات */
+
+document
+.getElementById("counter")
+.innerText =
+characters.length +
+" شخصية";
+
+/* اختصار ESC */
+
+document.addEventListener(
+
+"keydown",
+
+function(e){
+
+if(
+e.key==="Escape"
+){
+
+closeModal();
+
+}
+
+}
+
+);
 
 </script>
 
 </body>
-</html>
+</html>  
